@@ -46,7 +46,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public PagedResponse<Comment> getAllComments(Long blogId, int page, int size) {
         AppUtils.validatePageNumberAndSize(page, size);
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "id");
 
         Page<Comment> comments = commentRepository.findByBlogId(blogId, pageable);
 

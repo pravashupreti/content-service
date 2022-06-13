@@ -31,7 +31,7 @@ public class TagServiceImpl implements TagService {
     public PagedResponse<Tag> getAllTags(int page, int size) {
         AppUtils.validatePageNumberAndSize(page, size);
 
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "id");
 
         Page<Tag> tags = tagRepository.findAll(pageable);
 
