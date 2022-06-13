@@ -4,7 +4,9 @@ import com.ea.contentservice.model.Comment;
 import com.ea.contentservice.payload.ApiResponse;
 import com.ea.contentservice.payload.CommentRequest;
 import com.ea.contentservice.payload.PagedResponse;
+import com.ea.contentservice.security.UserPrincipal;
 
+import com.ea.contentservice.security.CurrentUser;
 import com.ea.contentservice.service.CommentService;
 import com.ea.contentservice.utils.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +33,12 @@ public class CommentController {
         return new ResponseEntity<>(allComments, HttpStatus.OK);
     }
 
-    @PostMapping("/{userId}")
-    public ResponseEntity<Comment> addComment(@Valid @RequestBody CommentRequest commentRequest, @PathVariable(name = "userId") Long userId,
+    @PostMapping("")
+    public ResponseEntity<Comment> addComment(@Valid @RequestBody CommentRequest commentRequest,@CurrentUser UserPrincipal currentUser,
                                               @PathVariable(name = "blogId") Long blogId) {
-        Comment newComment = commentService.addComment(commentRequest, userId, blogId);
+
+
+        Comment newComment = commentService.addComment(commentRequest, currentUser.getId(), blogId);
 
         return new ResponseEntity<>(newComment, HttpStatus.CREATED);
     }

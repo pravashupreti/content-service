@@ -1,4 +1,4 @@
-package com.ea.blogapi.config;
+package com.ea.contentservice.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
