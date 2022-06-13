@@ -16,5 +16,9 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
     time-zone: UTC
 
+app:
+  jwtSecret: secret
+  jwtExpirationInMs: 3600000
+
 server:
-  port: 8080
+  port: 8081
