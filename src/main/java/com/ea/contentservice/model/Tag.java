@@ -27,7 +27,7 @@ public class Tag  {
 
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "blog_tag", joinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"))
+	@JoinTable(name = "blog_tag", joinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "blog_id", referencedColumnName = "id"))
 	private List<Blog> blogs;
 
 	public Tag(String name) {
